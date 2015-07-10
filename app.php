@@ -20,8 +20,8 @@ function tracks_get(DateTime $date)
 
 	$LASTFM_API_URL = 'http://ws.audioscrobbler.com/2.0/';
 	$LASTFM_API_METHOD = 'user.getrecenttracks';
-	$LASTFM_API_KEY = '2f0adc911189735abf17a53a4b34707b';
-	$LASTFM_USER = 'tandouri';
+	$LASTFM_API_KEY = 'your_api_key';
+	$LASTFM_USER = 'your_username';
 	$params = array(
 		'method'    => $LASTFM_API_METHOD,
 		'user'      => $LASTFM_USER,
