@@ -64,7 +64,7 @@ function tracks_get(DateTime $date)
 	} else return null;
 }
 
-function tracks_render($tracks)
+function tracks_render_list($tracks)
 {
 	$html = '<ul>';
 
@@ -86,6 +86,28 @@ function tracks_render($tracks)
 	return $html;
 }
 
+function tracks_render_table($tracks)
+{
+	$html = '<table class="table table-bordered table-hover">';
+
+	foreach ($tracks as $track) {
+		$html .= '<tr>';
+		foreach ($track->date as $trackdate) {
+			$html .= '<td class="col-md-2"><b>'.$trackdate.'</b></td>';
+			break;
+		}
+		// workaround, because one parameter is named '#title' -.-
+		foreach ($track->artist as $artist_info) {
+			$html .= '<td class="col-md-4">'.$artist_info.'</td>';
+			break;
+		}
+		$html .= '<td>'.$track->name.'</td>';
+	}
+	$html .= '</table>';
+
+	return $html;
+}
+
 //$years_active = $lastm_user->getRegYear();
 $html = '';
 $reg_year = 2006;
@@ -99,7 +121,7 @@ $period = new DatePeriod($begin, DateInterval::createFromDateString('1 year'), $
 foreach ($period as $date) {
 	if ($tracks = tracks_get($date)) {
 		$html .= '<h3>'.$date->format('Y').'</h3>';
-		$html .= tracks_render($tracks);
+		$html .= tracks_render_table($tracks);
 	};
 }
 //echo $html;
