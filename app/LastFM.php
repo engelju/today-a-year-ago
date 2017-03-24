@@ -15,22 +15,14 @@ class LastFM
 		$next_day = clone $date;
 		$next_day = $next_day->sub(DateInterval::createfromdatestring('-1 day'));
 
-		//var_dump("-----------------------");
-		//var_dump($date);
-		//var_dump($previous_day);
-		//var_dump($next_day);
-
-		$params = [
+		$call = self::$API_URL.'?'.http_build_query([
 			'method'    => 'user.getrecenttracks',
 			'user'      => self::$USERNAME,
 			'api_key'   => self::$API_KEY,
-			//'from'      => $date->getTimestamp(),
 			'from'      => $previous_day->getTimestamp(),
 			'to'        => $next_day->getTimestamp(),
-			//'limit'     => 200,
 			'format'    => 'json',
-		];
-		$call = self::$API_URL.'?'.http_build_query($params);
+		]);
 		$response = api::doCurlCall($call);
 
 		$decoded = json_decode($response);

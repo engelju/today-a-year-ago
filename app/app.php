@@ -15,7 +15,6 @@ class app
 		$period = new DatePeriod($begin, DateInterval::createFromDateString('1 year'), $end);
 		foreach ($period as $date) {
 			if ($tracks = LastFM::getTracksForDate($date)) {
-				//$html .= tracks_render_table($date, $tracks);
 				$html[] = tracks_render_table($date, $tracks);
 			};
 		}
