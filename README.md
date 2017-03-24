@@ -1,7 +1,7 @@
 # today-a-year-ago
 Displays what you listened to around this day for the past few years (since you registered on lastfm).
 
-![How it could look like](https://github.com/engelju/today-a-year-ago/blob/master/a%20year%20ago.png)
+![How it could look like](https://github.com/engelju/today-a-year-ago/blob/master/a_year_ago.png)
 (could look like this, for example)
 
 ## A couple things
