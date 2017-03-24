@@ -4,7 +4,7 @@ class app
 {
 	public function run()
 	{
-		$html = '';
+		$html = [];
 
 		//$years_active = $lastm_user->getRegYear();
 		$reg_year = 2006;
@@ -15,11 +15,12 @@ class app
 		$period = new DatePeriod($begin, DateInterval::createFromDateString('1 year'), $end);
 		foreach ($period as $date) {
 			if ($tracks = LastFM::getTracksForDate($date)) {
-				$html .= tracks_render_table($date, $tracks);
+				//$html .= tracks_render_table($date, $tracks);
+				$html[] = tracks_render_table($date, $tracks);
 			};
 		}
 
-		return $html;
+		return implode('', array_reverse($html));
 	}
 }
 

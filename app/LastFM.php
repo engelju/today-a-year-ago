@@ -49,7 +49,6 @@ class LastFM
 			$tracks = [$track_item];
 		}
 
-		// we want the oldest entries first
-		return array_reverse($tracks);
+		return $tracks;
 	}
 }
