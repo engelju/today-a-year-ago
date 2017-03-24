@@ -7,8 +7,8 @@
     <title>Today, a year ago</title>
     <link href="style.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -36,10 +36,17 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+
     <div id="container" class="container">
-        <?php include('app.php'); ?>
-        <?php echo $html; ?>
+        <?php
+			spl_autoload_register(function ($classname) {
+				require("../app/".$classname .".php");
+			});
+            $app = new app;
+            echo $app->run();
+        ?>
     </div>
+
     <footer>
         <div class="container">
             <div class="row">
@@ -51,6 +58,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
